@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>처방전 업로드 오류</title>
+</head>
+<body>
+<script th:inline="javascript">
+    var url = [[${url}]];
+    var msg = [[${msg}]];
+    alert(msg);
+    location.href = url;
+</script>
+</body>
+</html>

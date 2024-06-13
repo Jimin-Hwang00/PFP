@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 30px;
+}
+input {
+    padding: 7px;
+}
+select, input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 32px;
+}
+.logo {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 20px;
+    color: black;
+}
+.subtitle {
+    font-size: 20px;
+    text-align: left;
+    margin-left: 20px;
+}
+.content {
+    font-size: 18px;
+    line-height: 1.6;
+    width: 750px;
+    justify-content: flex-start;
+    padding-left: 20px;
+    padding-right: 80px;
+}
+.prescription {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    margin: 0 auto;
+    justify-content: left;
+}
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.form-label {
+    width: 100px;
+    text-align: left;
+    margin-right: 10px;
+}
+.form-control-inline {
+    text-align: left;
+}
+.small-input {
+    width: 80px;
+}
+.medium-input {
+    width: 150px;
+}
+.medicine-list-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.medicine-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+}
+.medicine-group label {
+    width: 100px;
+    text-align: left;
+    margin-right: 10px;
+}
+.medicine-group input {
+    text-align: left;
+}
+.delete-medicine-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+.add-medicine-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.medicine-fields {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+.medicine-fields .small-input {
+    width: 80px;
+}
+.medicine-fields .medium-input {
+    width: 150px;
+}
+.gen-key-btn {
+    margin-top:20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.pharmacy-search button{
+    height: 43px;
+}
+.pharmacy-search input {
+    height: 43px;
+    margin-right: 20px;
+    width: 560px;
+}
+.submit-div {
+    display: flex;
+    justify-content: center;
+}
+.btn.btn-outline-secondary.index {
+    width: 700px;
+    padding: 20px;
+    margin: 20px;
+    margin-bottom: 10px;
+}

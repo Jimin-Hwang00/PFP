@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>처방전 확인</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <style>
+        input {
+          readonly: true;
+        }
+    </style>
+    <script th:inline="javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            const prescriptions = [[${prescriptions}]];
+            prescriptions.forEach((prescription, index) => {
+            const secondRegNoArr = prescription.regNumber.secondRegNo;
+            document.getElementById(`secondRegNo-${index}`).value = secondRegNoArr;
+            });
+        });
+    </script>
+</head>
+<body>
+    <div th:insert="~{index::logoFragment}"></div>
+    <div class="all-content">
+        <div class="content">
+            <div class="title">
+                처방전 확인
+            </div>
+            <div th:if="${#lists.isEmpty(prescriptions)}">
+                <h5 th:text="${msg}"></h5>
+            </div>
+            <div class="prescription" th:each="prescription:${prescriptions}">
+                <div class="form-group">
+                    <label class="form-label" for="medicalInsurance">의료보험</label>
+                    <input type="text" class="form-control-inline medium-input" id="medicalInsurance" name="medicalInsurance" maxlength="9" th:value="${prescription.medicalInsurance}" readonly="readonly">
+                    <label class="form-label" for="patientName" style="margin-left: 80px;">환자이름</label>
+                    <input type="text" class="form-control-inline medium-input" id="patientName" name="patientName" maxlength="5" th:value="${prescription.patientName}" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="phone1">환자번호</label>
+                    <select class="form-control-inline small-input" id="phone1" name="phone1" th:value="${prescription.phoneNumber.firstNo}" readonly="readonly">
+                        <option value="02">02</option>
+                        <option value="010">010</option>
+                    </select>&nbsp&nbsp-&nbsp&nbsp
+                    <input type="text" class="form-control-inline small-input" id="phone2" name="phone2" maxlength="4" th:value="${prescription.phoneNumber.secondNo}" readonly="readonly">&nbsp&nbsp-&nbsp&nbsp
+                    <input type="text" class="form-control-inline small-input" id="phone3" name="phone3" maxlength="4" th:value="${prescription.phoneNumber.thirdNo}" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="firstRegNo">주민등록번호</label>
+                    <input type="text" class="form-control-inline medium-input" id="firstRegNo" name="firstRegNo" maxlength="6" th:value="${prescription.regNumber.firstRegNo}" readonly="readonly">&nbsp&nbsp-&nbsp&nbsp
+                    <input type="text" class="form-control-inline medium-input" th:id="'secondRegNo-' + ${prescriptionStat.index}" name="secondRegNo" maxlength="7"    readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="date">작성일</label>
+                    <input type="date" class="form-control-inline" id="date" name="value" th:value="${prescription.date}" readonly="readonly">
+                </div>
+                <div class="medicine-list-title">
+                    약품 리스트
+                </div>
+                <div id="medicineFieldsContainer">
+                    <div class="medicine-group">
+                        <div class="medicine-fields">
+                            <label class="form-label">약품 코드</label>
+                            <input type="text" class="form-control-inline medium-input" name="medicineCode[]" th:value="${prescription.medicine.medicineCode}" readonly="readonly">
+                            <label class="form-label" style="margin-left: 30px;">약품 이름</label>
+                            <input type="text" class="form-control-inline medium-input" name="medicineName[]" th:value="${prescription.medicine.medicineName}" readonly="readonly">
+                        </div>
+                        <div class="medicine-fields">
+                            <label class="form-label">용량</label>
+                            <input type="text" class="form-control-inline medium-input" name="dosage[]" th:value="${prescription.medicine.dosage}" readonly="readonly">
+                            <label class="form-label" style="margin-left: 30px;">투여 방법</label>
+                            <input type="text" class="form-control-inline medium-input" name="howAdm[]" th:value="${prescription.medicine.howAdm}" readonly="readonly">
+                        </div>
+                        <div class="medicine-fields">
+                            <label class="form-label">횟수</label>
+                            <input type="text" class="form-control-inline medium-input" name="numAdm[]" th:value="${prescription.medicine.numAdm}" readonly="readonly">
+                            <label class="form-label" style="margin-left: 30px;">일수</label>
+                            <input type="text" class="form-control-inline medium-input" name="daysAdm[]" th:value="${prescription.medicine.daysAdm}" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
